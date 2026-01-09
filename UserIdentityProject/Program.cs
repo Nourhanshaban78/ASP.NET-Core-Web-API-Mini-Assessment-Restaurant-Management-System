@@ -18,9 +18,12 @@ builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAuthService,AuthService>();
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
+
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddDbContext<ApplicationDbContext>(options=>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultDatabase")));
+
 builder.Services.AddAuthentication(options => {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -37,8 +40,8 @@ builder.Services.AddAuthentication(options => {
           ValidateLifetime = true,
           ValidIssuer = builder.Configuration["Jwt:Issuer"],
           ValidAudience = builder.Configuration["Jwt:Audience"],
-          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-
+          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+          ClockSkew = TimeSpan.Zero
       };
     
 });

@@ -17,6 +17,16 @@
   },
   {
     "ContainingType": "UserIdentityProject.Controllers.AuthController",
+    "Method": "RefreshToken",
+    "RelativePath": "api/Auth/RefreshToken",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserIdentityProject.Controllers.AuthController",
     "Method": "RegisterAsync",
     "RelativePath": "api/Auth/register",
     "HttpMethod": "POST",

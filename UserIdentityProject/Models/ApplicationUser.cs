@@ -9,5 +9,7 @@ namespace UserIdentityProject.Models
         public string FristName { get; set; }
         [MaxLength(50)]
         public string LastName { get; set; }
+
+        public List<RefreshToken>? RefreshTokens { get; set; } 
     }
 }
